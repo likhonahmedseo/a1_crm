@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  user-select: none;
+}
+input, textarea, [contenteditable] {
+  user-select: text;
+}
+
+.input {
+  @apply px-3 py-2 text-sm border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 bg-white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ── Dark mode overrides ─────────────────────────────────────────────────── */
+.dark body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Main content area */
+.dark main {
+  background: #0f172a;
+}
+
+/* Cards / panels */
+.dark .bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+.dark .bg-slate-50 {
+  background-color: #1e293b !important;
+}
+.dark .border-slate-200 {
+  border-color: #334155 !important;
+}
+.dark .border-slate-100 {
+  border-color: #293548 !important;
+}
+
+/* Text */
+.dark .text-slate-700, .dark .text-slate-800, .dark .text-slate-900 {
+  color: #e2e8f0 !important;
+}
+.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Header bar */
+.dark header.bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* Input fields */
+.dark .input {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+.dark input, .dark textarea, .dark select {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #475569 !important;
+}
+
+/* Tables */
+.dark table thead {
+  background-color: #1a2744 !important;
+}
+.dark tbody tr:hover {
+  background-color: #1e2d45 !important;
+}
+.dark .divide-slate-100 > * + * {
+  border-color: #293548 !important;
+}
+
+/* Modals */
+.dark [role="dialog"], .dark .modal-content {
+  background-color: #1e293b !important;
+}
+
+/* Dropdown / hover states */
+.dark .hover\:bg-slate-50:hover, .dark .hover\:bg-slate-100:hover {
+  background-color: #293548 !important;
+}
+
+/* Scrollbar in dark */
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}

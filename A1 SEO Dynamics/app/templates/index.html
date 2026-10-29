@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Python Automation Workspace</p>
+      <h1>Marketing email drafting and outreach from one local web app.</h1>
+      <p class="hero-text">
+        Upload leads, define the campaign mission, generate personalized drafts, export them,
+        open Gmail compose tabs, and send through SMTP when you're ready.
+      </p>
+    </div>
+    <div class="hero-card">
+      <div class="metric">
+        <span class="metric-label">Contacts Loaded</span>
+        <strong>{{ contacts|length }}</strong>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Drafts Ready</span>
+        <strong>{{ drafts|length }}</strong>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Automation Modes</span>
+        <strong>Gmail + SMTP</strong>
+      </div>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <section class="flash-stack">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </section>
+    {% endif %}
+  {% endwith %}
+
+  <main class="dashboard">
+    <section class="panel form-panel">
+      <div class="panel-header">
+        <h2>Campaign Builder</h2>
+        <p>Everything starts from the mission and your lead list.</p>
+      </div>
+
+      <form method="post" action="{{ url_for('generate') }}" enctype="multipart/form-data" class="campaign-form">
+        <label>
+          <span>Mission task</span>
+          <textarea name="mission" rows="5" placeholder="Example: we help SaaS companies book more demos with SEO and outbound follow-up">{{ form_data.mission }}</textarea>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Sender name</span>
+            <input type="text" name="sender_name" value="{{ form_data.sender_name }}">
+          </label>
+          <label>
+            <span>Company</span>
+            <input type="text" name="sender_company" value="{{ form_data.sender_company }}">
+          </label>
+        </div>
+
+        <label>
+          <span>Offer</span>
+          <textarea name="offer" rows="4" placeholder="Example: a free website visibility audit and a 3-step lead generation plan">{{ form_data.offer }}</textarea>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Call to action</span>
+            <input type="text" name="call_to_action" value="{{ form_data.call_to_action }}">
+          </label>
+          <label>
+            <span>Tone</span>
+            <select name="tone">
+              {% for option in ["professional", "friendly", "direct", "warm"] %}
+                <option value="{{ option }}" {% if form_data.tone == option %}selected{% endif %}>{{ option|capitalize }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>Extra signature lines</span>
+          <textarea name="signature" rows="3" placeholder="Website, WhatsApp, calendar link, etc.">{{ form_data.signature }}</textarea>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Sender email for SMTP</span>
+            <input type="email" name="sender_email" value="{{ form_data.sender_email }}" placeholder="you@example.com">
+          </label>
+          <label class="file-field">
+            <span>Lead CSV</span>
+            <input type="file" name="contacts_file" accept=".csv">
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button type="submit" class="button button-primary">Generate Drafts</button>
+          <a class="button button-secondary" href="{{ sample_csv_url }}">Sample CSV</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel contacts-panel">
+      <div class="panel-header">
+        <h2>Contacts</h2>
+        <p>{{ contacts|length }} unique lead(s) in the current session.</p>
+      </div>
+
+      {% if contacts %}
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for contact in contacts %}
+                <tr>
+                  <td>{{ contact.email }}</td>
+                  <td>{{ contact.first_name }} {{ contact.last_name }}</td>
+                  <td>{{ contact.company }}</td>
+                  <td>{{ contact.role }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="empty-state">Upload a CSV to see your leads here.</div>
+      {% endif %}
+    </section>
+
+    <section class="panel drafts-panel">
+      <div class="panel-header">
+        <h2>Draft Preview</h2>
+        <p>Review subjects and message bodies before export or sending.</p>
+      </div>
+
+      {% if drafts %}
+        <div class="draft-layout">
+          <div class="draft-list">
+            {% for draft in drafts %}
+              <button
+                type="button"
+                class="draft-item {% if loop.first %}is-active{% endif %}"
+                data-draft-index="{{ loop.index0 }}"
+              >
+                <span class="draft-to">{{ draft.email }}</span>
+                <strong>{{ draft.subject }}</strong>
+                <span class="draft-status status-{{ draft.status }}">{{ draft.status }}</span>
+              </button>
+            {% endfor %}
+          </div>
+
+          <article class="draft-preview" id="draftPreview">
+            <div class="preview-meta">
+              <p><span>To</span><strong id="previewEmail">{{ drafts[0].email }}</strong></p>
+              <p><span>Subject</span><strong id="previewSubject">{{ drafts[0].subject }}</strong></p>
+              <p><span>Status</span><strong id="previewStatus">{{ drafts[0].status }}</strong></p>
+            </div>
+            <textarea id="previewBody" rows="14" readonly>{{ drafts[0].body }}</textarea>
+            <div class="preview-actions">
+              <a class="button button-secondary" id="previewGmailLink" href="{{ drafts[0].gmail_url }}" target="_blank" rel="noreferrer">Open This Draft in Gmail</a>
+            </div>
+          </article>
+        </div>
+      {% else %}
+        <div class="empty-state">Generate a campaign to preview your drafts here.</div>
+      {% endif %}
+    </section>
+
+    <section class="panel automation-panel">
+      <div class="panel-header">
+        <h2>Automation Actions</h2>
+        <p>Export, open Gmail compose tabs, send through SMTP, or reset the current campaign.</p>
+      </div>
+
+      {% if drafts %}
+        <div class="automation-grid">
+          <div class="automation-card">
+            <h3>Export</h3>
+            <p>Download your campaign drafts for review or reuse.</p>
+            <div class="action-row">
+              <a class="button button-secondary" href="{{ url_for('download_csv') }}">Download CSV</a>
+              <a class="button button-secondary" href="{{ url_for('download_json') }}">Download JSON</a>
+            </div>
+          </div>
+
+          <div class="automation-card">
+            <h3>Gmail Drafting</h3>
+            <p>Open compose tabs in your browser using the generated subject and body.</p>
+            <div class="quick-open">
+              <label>
+                <span>How many tabs</span>
+                <input type="number" id="gmailOpenLimit" min="1" max="{{ drafts|length }}" value="{{ [5, drafts|length]|min }}">
+              </label>
+              <button type="button" class="button button-primary" id="openGmailTabs">Open Gmail Draft Tabs</button>
+            </div>
+          </div>
+
+          <div class="automation-card">
+            <h3>SMTP Send</h3>
+            <p>Send directly using your configured SMTP credentials from the local machine.</p>
+            <form method="post" action="{{ url_for('send_smtp') }}" class="stack-form">
+              <label>
+                <span>Sender email</span>
+                <input type="email" name="sender_email" value="{{ form_data.sender_email }}" placeholder="you@example.com">
+              </label>
+              <button type="submit" class="button button-primary">Send via SMTP</button>
+            </form>
+          </div>
+
+          <div class="automation-card">
+            <h3>Reset Session</h3>
+            <p>Clear the loaded leads, generated drafts, and campaign form values.</p>
+            <form method="post" action="{{ url_for('reset') }}">
+              <button type="submit" class="button button-ghost">Clear Session</button>
+            </form>
+          </div>
+        </div>
+      {% else %}
+        <div class="empty-state">The automation actions will appear once drafts are generated.</div>
+      {% endif %}
+    </section>
+  </main>
+{% endblock %}

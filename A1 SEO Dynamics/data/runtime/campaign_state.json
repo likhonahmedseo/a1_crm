@@ -1,0 +1,123 @@
+{
+  "contacts": [
+    {
+      "email": "limonetnewyork@gmail.com",
+      "first_name": "Farooque",
+      "last_name": "Islam",
+      "company": "New York Limo Net",
+      "role": "CEO",
+      "website": "www.newyorklimo.net",
+      "notes": "Interested in pipeline growth"
+    },
+    {
+      "email": "likhonahmed.dm@gmail.com",
+      "first_name": "Likhon",
+      "last_name": "ahmed",
+      "company": "A1 Tech",
+      "role": "CEO",
+      "website": "a1technovation.com",
+      "notes": "Open to outreach experiments"
+    }
+  ],
+  "drafts": [
+    {
+      "email": "limonetnewyork@gmail.com",
+      "subject": "Boost Your Pipeline with a Free UX Audit",
+      "body": "Hi Farooque,  \n\nI noticed New York Limo Net is focused on pipeline growth, and I believe optimizing your landing pages could make a significant impact. High-converting landing pages can transform casual visitors into loyal customers, and that's where we excel at A1 Technovation.  \n\nTo kick things off, I\u2019d love to offer you a free UX audit of your current landing pages. This will help identify opportunities to enhance user experience and boost conversions.  \n\nIf this sounds interesting, let\u2019s schedule a quick call to discuss your goals and how we can assist.  \n\nLooking forward to connecting!  \n\nLikhon Ahmed  \nA1 Technovation  \nWhatsApp: +8801799976295",
+      "first_name": "Farooque",
+      "company": "New York Limo Net",
+      "status": "sent",
+      "error": null
+    },
+    {
+      "email": "likhonahmed.dm@gmail.com",
+      "subject": "Boost Your Conversions with a Free UX Audit",
+      "body": "Hi Limon,\n\nHigh-converting landing pages are essential for driving growth, and I believe A1 Technovation can help you achieve just that. As the CEO, you know how a well-optimized user experience can make all the difference in conversion rates.\n\nTo kick things off, I\u2019d like to offer you a free UX audit of your current landing pages. This audit will identify key areas for improvement, ensuring you capture more leads and enhance user engagement.\n\nIf you're open to exploring this, let\u2019s schedule a call. I\u2019m excited to discuss how we can elevate your online presence together.\n\nLooking forward to connecting!\n\nLikhon Ahmed  \nA1 Technovation  \nWhatsApp: +8801799976295",
+      "first_name": "Likhon",
+      "company": "A1 Tech",
+      "status": "sent",
+      "error": null
+    }
+  ],
+  "form_data": {
+    "mission": "We build high-converting landing pages",
+    "sender_name": "Likhon Ahmed",
+    "sender_company": "A1 Technovation",
+    "offer": "A free UX audit",
+    "call_to_action": "Book a call",
+    "tone": "friendly",
+    "signature": "WhatsApp: +8801799976295",
+    "sender_email": "info.a1technovation@gmail.com"
+  },
+  "conversations": [
+    {
+      "email": "noreply@facebookmail.com",
+      "status": "active",
+      "auto_reply_count": 1,
+      "created_at": "2026-04-15T14:18:29.511149",
+      "last_activity": "2026-04-15T14:22:12.266029",
+      "messages": [
+        {
+          "direction": "received",
+          "body": "Hi,\r\n\r\nDear Likhon Ahmed,\r\n\r\nAttached is your self accounted document in relation to Meta activity.\r\n\r\nThank you, Meta\r\n\r\nThanks,\r\nThe Facebook team\r\n\r\n\r\n\r\n========================================\r\nThis message was sent to info.a1technovation@gmail.com at your request.\r\nMeta Platforms, Inc., Attention: Community Support, 1 Meta Way, Menlo Park, CA 94025",
+          "timestamp": "2026-04-15T14:18:29.511164",
+          "classification": "other"
+        },
+        {
+          "direction": "sent",
+          "body": "Hello,\n\nThank you for sending the document. However, I did not request any information related to Meta activity, nor am I familiar with the name Likhon Ahmed. Could you please verify that this message was intended for me and provide additional context if needed?\n\nLooking forward to your clarification.\n\nBest regards,\n\n[Your Name]",
+          "timestamp": "2026-04-15T14:22:08.657009",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "email": "likhonahmed.dm@gmail.com",
+      "status": "active",
+      "auto_reply_count": 0,
+      "created_at": "2026-04-15T14:18:55.369694",
+      "last_activity": "2026-04-15T14:18:55.369698",
+      "messages": [
+        {
+          "direction": "received",
+          "body": "hi, sounds good. how can i help you?\r\n\r\nRegards\r\n\r\nLikhon Ahmed\r\n\r\nFounder & CEO\r\n*A1 Technovation* <https://www.a1technovation.com/>\r\n\r\n____________________________________________________________\r\n____________________________________________________________\r\n_________________________________________________________\u00ad\u00ad\u00ad\u00ad\u00ad____\r\n\r\nAddress: 35/1, Ibrahimpur, Dhaka Cantonment, Dhaka 1206.\r\n\r\n*Email: likhonahmed.dm@gmail.com <likhonahmed.dm@gmail.com>* |*\r\ninfo.a1technovation@gmail.com\r\n<info.a1technovation@gmail.com>*\r\n*Cell: +8801799 - 976295 | +88015 68071470*",
+          "timestamp": "2026-04-15T14:18:55.369705",
+          "classification": "interested"
+        }
+      ]
+    },
+    {
+      "email": "limonetnewyork@gmail.com",
+      "status": "active",
+      "auto_reply_count": 1,
+      "created_at": "2026-04-15T14:19:00.646778",
+      "last_activity": "2026-04-15T14:21:50.435904",
+      "messages": [
+        {
+          "direction": "received",
+          "body": "hi! I received your email. i am interested to work with you. which infos do\r\nyou need to do the audit?",
+          "timestamp": "2026-04-15T14:19:00.646801",
+          "classification": "interested"
+        },
+        {
+          "direction": "received",
+          "body": "Yes, I would be interested.",
+          "timestamp": "2026-04-15T14:19:04.955033",
+          "classification": "interested"
+        },
+        {
+          "direction": "received",
+          "body": "How much do you charge? my budget is 500$ per month maximum for SEO. Is it\r\nok for you? If yes we can set meeting on Saturday 9 pm BDT.",
+          "timestamp": "2026-04-15T14:19:10.576843",
+          "classification": "question"
+        },
+        {
+          "direction": "sent",
+          "body": "Hi there!\n\nThanks for reaching out. Your budget of $500 per month for SEO works for us. We can definitely tailor a strategy that fits your needs within that range.\n\nFor the audit, I'll need access to your website, Google Analytics, and Search Console data. If you have any specific goals or areas you think need focus, let me know. \n\nSaturday at 9 pm BDT is perfect for our meeting. I'll send you a calendar invite shortly. Looking forward to discussing how we can boost your site's performance!\n\nBest,  \nLikhon Ahmed  \nA1 Technovation  \nWhatsApp: +8801799976295",
+          "timestamp": "2026-04-15T14:21:46.504218",
+          "classification": "question"
+        }
+      ]
+    }
+  ]
+}
